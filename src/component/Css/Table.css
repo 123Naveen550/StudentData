@@ -1,114 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-
-*{
-    box-sizing: border-box;   
-}
-.body{
-    margin: 40px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.tabel_responsive{
-    max-width: 900px;
-    border: 1px solid rgb(214, 132, 0);
-    background-color: #efefef33;
-    padding: 15px;
-    overflow: auto;
-    margin: auto;
-    border-radius: 4px;
-}
-
-.header{
-  display: flex;
-justify-content: space-between; 
-height: 40px;
-}
-.header>h2{    
-    color: rgb(206, 101, 15);
-    text-shadow: #444;
-    margin-top: 0em;
-}
-.header .btn-open{
-    color: #444;
-    background: #fff;
-    border: 1px solid;
-    display: inline-block;
-    padding: 10px 11px;
-    font-weight: bold;
-    border-radius:3px;
-    transition: 0.3s ease-in-out; 
-    border-color: #ff6600; 
-    cursor: pointer;
-}
-.header .btn-open:hover{
-    box-shadow: 0 3px 8px #0003;
-    color:#9dff00;
-}
-table{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .Flex-box {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
     width: 100%;
-    font-size: 13px;
-    margin-top: 1em;
-    color: #444;
-    white-space: nowrap;
-    border-collapse: collapse;
-}
-table>thead{
-    background-color: rgb(214, 104, 0);
-    color: #fff;
-}
-table>thead th{
-    padding: 15px;
-}
-table th,
-table td{
-    border: 1px solid #00000017;
-    padding: 10px 15px;
-}
-.action_btn{
-display: flex;
-justify-content: center;
-gap: 10px;
-}
-.action_btn .btn-edit,
-.action_btn>button{
-    color: #444;
-    background: #fff;
-    border: 1px solid;
-    display: inline-block;
-    padding: 7px 20px;
+    border: 2px solid black;
+  }
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0eebd8;
+    padding: 0.5em;
+    font-size: 25px;
     font-weight: bold;
-    border-radius:3px;
-    transition: 0.3s ease-in-out;
+    color: white;
+  }
+  .Heading{
+    background-color:#0eb8eb;
+  }
+  .Table-data{
+    background-color:lightgray;
+  }
+  .flex-table {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .Data-table {
+    width: 100%;
+  }
+  /* .btn-Add {
+    background-color: red;
+    color: #fff;
+    border-radius: 4px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
     cursor: pointer;
-    font-size: 1em;
-}
-
-.action_btn .btn-edit{
-    border-color: #26a69a;
-    letter-spacing: 1px;
-}
-.action_btn .btn-edit:hover{
-    box-shadow: 0 3px 8px #0003;
-    color: #26a69a;
-}
-.action_btn>button{
-    border-color: orange;
-}
-.action_btn>button:hover{
-    box-shadow: 0 3px 8px #0003;
-    color: orange;
-} 
-
-
-table>tbody>tr{
-    background-color: #fff;
-    transition: 0.3s ease-in-out;
-}
-table>tbody>tr:nth-child(even){
-    background-color:#987bdd;
-}
-
-table>tbody>tr:hover{
-    filter: drop-shadow(0px 2px 6px #0002);
-}
-
+  } */
+  
+  
