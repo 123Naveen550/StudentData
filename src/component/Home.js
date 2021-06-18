@@ -5,79 +5,67 @@ import { Component } from "react";
 class Home extends Component {
   constructor() {
     super();
-    this.state = {
-      title: "Student List",
-      Input: 0,
-      index: "",
-      StudentData: [],
-    };
-  }
-  componentDidMount() {
-    this.refs.name.focus();
+    this.index = -1;
+    this.StudentDetail = localStorage.StudentDetail ? JSON.parse(localStorage.StudentDetail) : [];
+    this.state = {      
+      studentlist:this.StudentDetail      
+    }
   }
 
-  submit = (event) => {
-    event.preventDefault();
-    let StudentData = this.state.StudentData;
+  submit = (event,index = -1) => {
+    event.preventDefault();    
+    let studentlist = this.state.studentlist;
     let name = this.refs.name.value;
     let email = this.refs.email.value;
     let qualification = this.refs.qualification.value;
-    let date = new Date().toDateString();
-
-    if (this.state.Input === 0) {
-      let data = {
-        name,
-        email,
-        qualification,
-        date,
-      };
-      StudentData.push(data);
-    } else {
-      let index = this.state.index;
-      StudentData[index].name = name;
-      StudentData[index].email = email;
-      StudentData[index].qualification = qualification;
+    let date = new Date().toDateString()
+    
+      if (index === -1) {
+        let data = {
+          name, email, qualification, date
+        }
+        studentlist.push(data);
+      }
+      else {        
+        studentlist[index].name = name;
+        studentlist[index].email = email;
+        studentlist[index].qualification = qualification;
     }
+    this.StudentDetail = studentlist;
+    localStorage.setItem('StudentDetail', JSON.stringify(studentlist));
+    this.index = -1;
+    
+    window.location.href="/"
+  }
 
-    this.setState({
-      StudentData: StudentData,
-      Input: 0,
-    });
-    this.refs.Form.reset();
-    this.refs.name.focus();
-  };
 
-  // Remove
 
   Remove = (index) => {
-    let StudentData = this.state.StudentData;
-    StudentData.splice(index, 1);
+    let studentlist = this.StudentDetail;
+    studentlist.splice(index, 1);
+    localStorage.setItem('StudentDetail', JSON.stringify(studentlist));
+    this.StudentDetail=studentlist
     this.setState({
-      StudentData: StudentData,
+      studentlist: studentlist
     });
-    this.refs.Form.reset();
-    this.refs.name.focus();
-  };
+   
+  }
 
-  // Edit
+ 
 
   Edit = (index) => {
-    let data = this.state.StudentData[index];
+    let data = this.StudentDetail[index];
     this.refs.name.value = data.name;
     this.refs.email.value = data.email;
     this.refs.qualification.value = data.qualification;
-    this.setState({
-      Input: 1,
-      index: 1,
-    });
-    this.refs.name.focus();
-  };
-
+    this.index = index;    
+  }
+  
   render() {
-    let StudentData = this.state.StudentData;
+    let  studentlist = this.state. studentlist;
     return (
       <>
-        {/* ADDForm */}
+       
 
         <div
           class="modal fade"
@@ -137,7 +125,7 @@ class Home extends Component {
                     </div>
                   </div>
                   <div className="input_field input_button">
-                    <button className="btn" onClick={(event) => this.submit(event)}>
+                    <button className="btn" onClick={(event) => this.submit(event,this.index)}>
                       Sumbit
                     </button>
                     <button className="btn" type="reset">
@@ -150,7 +138,6 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* table */}
 
         <div className="Flex-box">
       <div className="Header">
@@ -176,7 +163,7 @@ class Home extends Component {
             <th>Created On</th>
             <th>Action</th>
           </tr>
-          {StudentData.map((ele,index)=> {
+          {studentlist.map((ele,index)=> {
             return (
               <tr className="Table-data">
                 <td>{index+1}</td>
